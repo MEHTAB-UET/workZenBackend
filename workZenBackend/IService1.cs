@@ -24,13 +24,23 @@ namespace workZenBackend
 
 
 		[OperationContract]
-		string sendEmailToNewUser(string userEmail , string userName);
+		string sendEmailToNewUser(string userEmail, string username, string department, string designation, string dateofJoining);
+
+
+
+        [OperationContract]
+		string sendEmail(string userEmail);
+		//this sendEmail function is only for sending OTP to manager
+
+		[OperationContract]
+		string sendTaskEmail(string userEmail,string userName, string taskName, string taskDescription, string taskDeadline);
+
 
 
 
 		[OperationContract]
-		string sendEmail(string userEmail);
-		//this sendEmail function is only for sending OTP to manager
+		string sendLoginMailToEmployee(string userEmail);
+
     }
 
 

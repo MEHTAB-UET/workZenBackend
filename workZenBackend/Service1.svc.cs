@@ -30,31 +30,35 @@ namespace workZenBackend
 			return composite;
 		}
 
-		public string sendEmailToNewUser(string userEmail , string username)
-		{
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("mehtabatkips@gmail.com");
-                mail.To.Add(userEmail);
-                mail.Subject = "Welcome to WorkZen!";
-                mail.Body = $"Hi {username},\n\nYour account has been created successfully.\n\nThanks,\nWorkZen Team";
+        public string sendEmailToNewUser(string userEmail, string username, string department, string designation, string dateofJoining)
+        {
 
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "zxgu snig wass wyjm"); 
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
+            
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.From = new MailAddress("mehtabatkips@gmail.com");
+                    mail.To.Add(userEmail);
+                    mail.Subject = "Welcome to WorkZen!";
+                    mail.Body = $"Hi {username} ,\n\nYour account have been Register on WorkZen as a {designation} \n\n In Department of {department}\n\n Your Date of joining is {dateofJoining}.\n\nThanks,\nWorkZen Team";
 
-                return "Email sent successfully!";
-            }
-            catch (Exception ex)
-            {
-				return "Email failed: " + ex.Message;
-            }
+                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                    smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "zmxi hakb wyuf cryg");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
 
+                    return "Email sent successfully!";
+                }
+                catch (Exception ex)
+                {
+                    return "Email failed: " + ex.Message;
+                }
+
+            
         }
 
-		public string sendEmail(string userEmail)
+
+        public string sendEmail(string userEmail)
 		{
 
             try
@@ -66,7 +70,7 @@ namespace workZenBackend
                 mail.Body = $"Hi Mehtab ,\n\nYour account OTP is  584379.\n\nThanks,\nWorkZen Team";
 
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "teqv vzmj edlx lnia");
+                smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "zmxi hakb wyuf cryg");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
 
@@ -78,5 +82,56 @@ namespace workZenBackend
             }
 
         }
-	}
+
+        public string sendLoginMailToEmployee(string userEmail)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("mehtabatkips@gmail.com");
+                mail.To.Add(userEmail);
+                mail.Subject = "New Login to WorkZen!";
+                mail.Body = $"Hi Mehtab ,\n\nYou have Successfully login to WorkZen .\n\nThanks,\nWorkZen Team";
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "zmxi hakb wyuf cryg");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+
+                return "Email sent successfully!";
+            }
+            catch (Exception ex)
+            {
+                return "Email failed: " + ex.Message;
+            }
+
+        }
+
+
+
+        public string sendTaskEmail(string userEmail,string userName, string taskName, string taskDescription, string taskDeadline)
+        {
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("mehtabatkips@gmail.com");
+                mail.To.Add(userEmail);
+                mail.Subject = "New Task Assigned !";
+                mail.Body = $"Hi {userName} ,\n\nYou have been assign the {taskName}.\n\n You must have to meet the deadline {taskDeadline}. \n\n Description: {taskDescription}.\n\nThanks,\nWorkZen Team";
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "zmxi hakb wyuf cryg");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+
+                return "Email sent successfully!";
+            }
+            catch (Exception ex)
+            {
+                return "Email failed: " + ex.Message;
+            }
+
+        }
+    }
 }
