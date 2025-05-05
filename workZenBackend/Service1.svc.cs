@@ -43,7 +43,7 @@ namespace workZenBackend
                     mail.Body = $"Hi {username} ,\n\nYour account have been Register on WorkZen as a {designation} \n\n In Department of {department}\n\n Your Date of joining is {dateofJoining}.\n\nThanks,\nWorkZen Team";
 
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                    smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "zmxi hakb wyuf cryg");
+                    smtp.Credentials = new NetworkCredential("mehtabatkips@gmail.com", "");
                     smtp.EnableSsl = true;
                     smtp.Send(mail);
 
